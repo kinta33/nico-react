@@ -9,7 +9,6 @@ export const InputList = (props) => {
     tmp[num] = event.target.value;
     listState.setList(tmp);
     //listNumもnumも0起算
-    alert(listState.listNum + "=" + (num + 1));
     if (listState.listNum === num + 1 && listState.listNum < title.length)
       listState.setListNum(listState.listNum + 1);
   };

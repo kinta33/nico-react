@@ -37,6 +37,13 @@ export const Main = memo(() => {
     setHistoryList: setHistoryList
   };
 
+  const data = {
+    his: his,
+    group: group,
+    size: size,
+    color: color,
+    speed: speed
+  };
   const checkPassword = () => {
     if (password === "kanri22") setAdmin(true);
   };
@@ -64,19 +71,19 @@ export const Main = memo(() => {
           contents={sizeList}
         />
         <Select
-          title="早さ"
+          title="速さ"
           setFunc={setSpeed}
           value={speed}
           contents={speedList}
         />
 
         <TitleInput title="コメント" size="50" setFunc={setComment} />
-        <Button para={comment} his={his} history={"「" + comment + "」"}>
+        <Button para={comment} data={data} history={"「" + comment + "」"}>
           コメント送信
         </Button>
         <Button
           para={"@Q:" + comment}
-          his={his}
+          data={data}
           history={"「" + comment + "」を質問で送信"}
         >
           質問として送信
@@ -84,7 +91,7 @@ export const Main = memo(() => {
       </DefaultArea>
 
       <DefaultArea pic={picNice}>
-        <Button para={"@Nice"} nice={true} his={his} history={"いいね!"}>
+        <Button para={"@Nice"} nice={true} data={data} history={"いいね!"}>
           いいね
         </Button>
       </DefaultArea>
@@ -95,7 +102,7 @@ export const Main = memo(() => {
             <Button
               para={`@V:${index + 1}`}
               key={index}
-              his={his}
+              data={data}
               vote={true}
               history={index + 1 + "に投票"}
             >
@@ -110,12 +117,12 @@ export const Main = memo(() => {
           title="パスワード"
           size="10"
           setFunc={setPassword}
-          his={his}
+          data={data}
           func={checkPassword}
         >
           管理画面解放
         </TitleInputButton>
-        {admin && <AdminArea his={his} />}
+        {admin && <AdminArea data={data} />}
       </DefaultArea>
 
       <DefaultArea pic={picHistory}>

@@ -5,20 +5,27 @@ import { DefaultInput } from "../atoms/input/DefaultInput";
 export const TitleInputButton = (props) => {
   const {
     title,
+    type,
     size,
     placeholder,
+
     setFunc,
     children,
     func,
     para,
-    his,
+    data,
     history
   } = props;
   return (
     <SContainer>
       {title}
-      <DefaultInput size={size} placeholder={placeholder} setFunc={setFunc} />
-      <Button func={func} para={para} his={his} history={history}>
+      <DefaultInput
+        type={type}
+        size={size}
+        placeholder={placeholder}
+        setFunc={setFunc}
+      />
+      <Button func={func} para={para} data={data} history={history}>
         {children}
       </Button>
     </SContainer>
