@@ -67,10 +67,10 @@ const SButton = styled.button`
 `;
 
 const NiceButton = styled(SButton)`
-  background: #ff1493;
-  border: 2px solid #c71585;
+  background: blue;
+  border: 2px solid blue;
   &:active {
-    background: #c71585;
+    background: blue;
   }
 `;
 const VoteButton = styled(SButton)`
