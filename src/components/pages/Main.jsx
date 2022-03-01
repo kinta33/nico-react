@@ -1,3 +1,4 @@
+//金子がコメントを入れました
 import { useState, memo } from "react";
 import styled from "styled-components";
 
