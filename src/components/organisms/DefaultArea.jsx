@@ -13,7 +13,7 @@ export const DefaultArea = (props) => {
 };
 
 const SContainer = styled.div`
-  width: 97%;
+  width: 96%;
   font-size: 20px;
   position: relative;
   margin: 45px 0px;
@@ -23,10 +23,9 @@ const SContainer = styled.div`
   background: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
   @media screen and (max-width: 568px) {
-    max-width: 100%;
-
+    max-width: 94%;
     margin: 2em 0em;
-    padding: 0.5em 0.5em;
+    padding: 2%;
   }
 `;
 

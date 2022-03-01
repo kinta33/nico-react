@@ -51,8 +51,7 @@ const SButton = styled.button`
     background: #192f60;
     opacity: 0.8;
   }
-  @media screen and (max-width: 1024px) {
-  }
+
   @media screen and (max-width: 568px) {
     height: 2em;
     width: 98%;
@@ -67,18 +66,13 @@ const SButton = styled.button`
 `;
 
 const NiceButton = styled(SButton)`
-  background: blue;
-  border: 2px solid blue;
+  background: #00afcc;
+  border: 2px solid #008db7;
   &:active {
-    background: blue;
+    background: #008db7;
   }
 `;
 const VoteButton = styled(SButton)`
-  background: #f8b500;
-  border: 2px solid #ff8c00;
-  &:active {
-    background: #ff8500;
-  }
   @media screen and (max-width: 568px) {
     margin: 5px;
     border-radius: 0.3em;
