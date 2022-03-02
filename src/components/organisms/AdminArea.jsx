@@ -5,7 +5,7 @@ import { Explanation } from "../atoms/explanation/Explanation";
 import { Indent } from "../atoms/layout/Indent";
 import { DefaultRadio } from "../atoms/radio/DefaultRadio";
 import { Select } from "../atoms/select/Select";
-import { Textarea } from "../atoms/Textarea/Textarea";
+import { Textarea } from "../atoms/textarea/Textarea";
 import { InputList } from "../molecures/InputList";
 import { TitleInputButton } from "../molecures/TitleInputButton";
 
