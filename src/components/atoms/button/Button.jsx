@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 export const Button = (props) => {
   const register = (para) => {
+    if (data.group === "") {
+      alert("グループを入力してください。");
+      return;
+    }
     alert(
       history +
         "," +
@@ -19,6 +23,7 @@ export const Button = (props) => {
       data.his.setHistoryList([...data.his.historyList, history]);
     }
   };
+
   const {
     children,
     func = () => register(para),

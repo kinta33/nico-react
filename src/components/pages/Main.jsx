@@ -23,13 +23,16 @@ export const Main = memo(() => {
   const [password, setPassword] = useState("");
   const [historyList, setHistoryList] = useState([]);
   const [admin, setAdmin] = useState(false);
-  const [size, setSize] = useState("普通");
-  const [color, setColor] = useState("黒");
-  const [speed, setSpeed] = useState("普通");
+  const [color, setColor] = useState("Black");
+  const [size, setSize] = useState("25");
+  const [speed, setSpeed] = useState("20");
 
-  const colorList = ["黒", "赤", "青"];
-  const sizeList = ["大", "普通", "小"];
-  const speedList = ["速い", "普通", "遅い"];
+  const colorList = ["黒", "赤", "青", "白"];
+  const colorListValule = ["Black", "Red", "Blue", "White"];
+  const sizeList = ["超大", "大", "普通", "小"];
+  const sizeListValule = ["60", "40", "25", "15"];
+  const speedList = ["超速", "速い", "普通", "遅い", "超遅"];
+  const speedListValule = ["80", "40", "20", "15", "10"];
 
   const his = {
     historyList: historyList,
@@ -58,22 +61,25 @@ export const Main = memo(() => {
 
       <DefaultArea pic={picComment}>
         <Select
-          title="色"
+          title="形式"
           setFunc={setColor}
           value={color}
           contents={colorList}
+          contentsValue={colorListValule}
         />
         <Select
-          title="大きさ"
+          title=""
           setFunc={setSize}
           value={size}
           contents={sizeList}
+          contentsValue={sizeListValule}
         />
         <Select
-          title="速さ"
+          title=""
           setFunc={setSpeed}
           value={speed}
           contents={speedList}
+          contentsValue={speedListValule}
         />
 
         <TitleInput
