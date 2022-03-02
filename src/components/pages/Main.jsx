@@ -29,7 +29,7 @@ export const Main = memo(() => {
 
   const colorList = ["黒", "赤", "青"];
   const sizeList = ["大", "普通", "小"];
-  const speedList = ["早い", "普通", "遅い"];
+  const speedList = ["速い", "普通", "遅い"];
 
   const his = {
     historyList: historyList,
