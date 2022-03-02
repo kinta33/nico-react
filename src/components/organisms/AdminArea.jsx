@@ -10,14 +10,14 @@ import { InputList } from "../molecures/InputList";
 import { TitleInputButton } from "../molecures/TitleInputButton";
 
 export const AdminArea = (props) => {
-  const { his } = props;
+  const { data } = props;
 
   const [timer, setTimer] = useState(0);
   const [voteType, setVoteType] = useState("num");
   const [voteNum, setVoteNum] = useState(2);
   const [voteCsv, setVoteCsv] = useState("");
   const [voteListNum, setVoteListNum] = useState(3);
-  const [voteList, setVoteList] = useState(["a", "b", "c"]);
+  const [voteList, setVoteList] = useState(["", "", ""]);
   const listState = {
     listNum: voteListNum,
     setListNum: setVoteListNum,
@@ -49,36 +49,53 @@ export const AdminArea = (props) => {
             size="5"
             setFunc={setTimer}
             para={"@Set:" + timer}
-            his={his}
+            data={data}
             history={"タイマーセット(" + timer + "分で設定)"}
+            type="number"
           >
             タイマーセット
           </TitleInputButton>
-          <Button para="@Start" his={his}>
+          <Button para="@Start" data={data}>
             タイマースタート
           </Button>
-          <Button para="@Stop" his={his}>
+          <Button para="@Stop" data={data}>
             タイマーストップ
           </Button>
         </Indent>
         ●投票
         <Indent>
-          <Button para="@VStart" his={his}>
+          <Button para="@VStart" data={data}>
             投票スタート
           </Button>
-          <Button para="@VStop" his={his}>
+          <Button para="@VStop" data={data}>
             投票ストップ
           </Button>
-          <Button para="@VShow" his={his}>
+          <Button para="@VShow" data={data}>
             投票結果表示
           </Button>
-          <Button para="@VHide" his={his}>
+          <Button para="@VHide" data={data}>
             投票結果隠す
           </Button>
-          <Button para="@VReset" his={his}>
+          <Button para="@VReset" data={data}>
             投票リセット
           </Button>
-          <Button para="@VSet:" his={his}>
+          <Button
+            para={
+              voteType === "num"
+                ? "@VSetN:" + voteNum
+                : voteType === "csv"
+                ? "@VSet:" + voteCsv
+                : "@VSet:" + voteList.join(",")
+            }
+            history={
+              voteType === "num"
+                ? "投票の選択肢を更新する（選択肢数" + voteNum + ")"
+                : voteType === "csv"
+                ? "投票の選択肢を更新する（" + voteCsv + ")"
+                : "投票の選択肢を更新する（" + voteList.join(",") + "）"
+            }
+            data={data}
+          >
             投票選択肢更新
           </Button>
           <br />
@@ -102,7 +119,12 @@ export const AdminArea = (props) => {
             text="CSV指定"
           />
           <Indent>
-            <Textarea cols={60} rows={4} setFunc={setVoteCsv} />
+            <Textarea
+              cols="60"
+              rows="4"
+              placeholder="カンマ区切りで選択肢を入力してください"
+              setFunc={setVoteCsv}
+            />
           </Indent>
           <DefaultRadio
             select={voteType}
@@ -111,10 +133,15 @@ export const AdminArea = (props) => {
             text="選択肢入力"
           />
           <Indent>
-            <Button func={voteListClear} his={his}>
+            <Button func={voteListClear} data={data}>
               選択肢クリア
             </Button>
-            <InputList title={title} size={30} listState={listState} />
+            <InputList
+              title={title}
+              size="30"
+              placeholder="選択肢を入力してください"
+              listState={listState}
+            />
             <Explanation>
               ※半角カンマは使用しないでください。空白行があるとそれ以降は無効となります。
             </Explanation>

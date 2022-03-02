@@ -2,17 +2,28 @@ import styled from "styled-components";
 
 export const Button = (props) => {
   const register = (para) => {
-    alert(para);
-    alert(children);
+    alert(
+      history +
+        "," +
+        para +
+        "," +
+        data.group +
+        "," +
+        data.color +
+        "," +
+        data.size +
+        "," +
+        data.speed
+    );
     if (history !== "") {
-      his.setHistoryList([...his.historyList, history]);
+      data.his.setHistoryList([...data.his.historyList, history]);
     }
   };
   const {
     children,
     func = () => register(para),
     para,
-    his,
+    data,
     history = children,
     vote,
     nice

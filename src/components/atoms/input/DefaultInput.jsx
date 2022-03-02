@@ -1,9 +1,17 @@
 import styled from "styled-components";
 
 export const DefaultInput = (props) => {
-  const { size = "100%", placeholder = "", setFunc } = props;
+  const { size = "100%", placeholder = "", type = "text", setFunc } = props;
   const onChangeInput = (event) => setFunc(event.target.value);
-  return (
+  return type === "number" ? (
+    <SInput
+      type={type}
+      min="0"
+      size={size}
+      placeholder={placeholder}
+      onChange={onChangeInput}
+    />
+  ) : (
     <SInput size={size} placeholder={placeholder} onChange={onChangeInput} />
   );
 };
