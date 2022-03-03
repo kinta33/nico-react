@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Button = (props) => {
-  const register = (para) => {
+  const register = () => {
     if (data.group === "") {
       alert("グループを入力してください。");
       return;
@@ -19,10 +19,53 @@ export const Button = (props) => {
         "," +
         data.speed
     );
-    if (history !== "") {
-      data.his.setHistoryList([...data.his.historyList, history]);
-    }
+
+    //送信
+    ajax(
+      {
+        group: data.group, //グループ
+        color: data.color, //色
+        size: data.size, //大きさ
+        pitch: data.speed, //速さ
+        comment: data.para //コメント
+      },
+      //送信先
+      "https://n2ws06j1hg.execute-api.ap-northeast-1.amazonaws.com/prod/NicoRegister2",
+      () => {
+        if (history !== "") {
+          data.his.setHistoryList([...data.his.historyList, history]);
+        }
+      }
+    );
   };
+
+  //■ajax送信汎用テンプレート（data:送信データ、url:送信先URL、successFunction:送信成功時に実行する関数）
+  function ajax(data, url, successFunction) {
+    //送信
+    /*
+    $.ajax({
+      type: "post",
+      url: url,
+      async: false,
+      data: JSON.stringify(data),
+      contentType: "application/json",
+      dataType: "json",
+      success: function (param) {
+        if (param.error) {
+          alert(param.message);
+        } else {
+          //alert("success");
+          successFunction(param);
+        }
+      },
+      error: function (param) {
+        // Error
+        alert("error");
+        alert(JSON.stringify(param));
+      }
+    });
+  */
+  }
 
   const {
     children,

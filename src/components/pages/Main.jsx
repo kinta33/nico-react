@@ -27,13 +27,6 @@ export const Main = memo(() => {
   const [size, setSize] = useState("25");
   const [speed, setSpeed] = useState("20");
 
-  const colorList = ["黒", "赤", "青", "白"];
-  const colorListValule = ["Black", "Red", "Blue", "White"];
-  const sizeList = ["超大", "大", "普通", "小"];
-  const sizeListValule = ["60", "40", "25", "15"];
-  const speedList = ["超速", "速い", "普通", "遅い", "超遅"];
-  const speedListValule = ["80", "40", "20", "15", "10"];
-
   const his = {
     historyList: historyList,
     setHistoryList: setHistoryList
@@ -58,28 +51,27 @@ export const Main = memo(() => {
           ※開催者から提示されたグループ名を入力することで情報を送信できます。必ず入力してください。
         </Explanation>
       </DefaultArea>
-
       <DefaultArea pic={picComment}>
         <Select
           title="形式"
           setFunc={setColor}
           value={color}
-          contents={colorList}
-          contentsValue={colorListValule}
+          contents={["黒", "赤", "青", "白"]}
+          contentsValue={["Black", "Red", "Blue", "White"]}
         />
         <Select
           title=""
           setFunc={setSize}
           value={size}
-          contents={sizeList}
-          contentsValue={sizeListValule}
+          contents={["超大", "大", "普通", "小"]}
+          contentsValue={["60", "40", "25", "15"]}
         />
         <Select
           title=""
           setFunc={setSpeed}
           value={speed}
-          contents={speedList}
-          contentsValue={speedListValule}
+          contents={["超速", "速い", "普通", "遅い", "超遅"]}
+          contentsValue={["80", "40", "20", "15", "10"]}
         />
 
         <TitleInput
