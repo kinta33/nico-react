@@ -64,7 +64,7 @@ export const Main = memo(() => {
           setFunc={setSize}
           value={size}
           contents={["超大", "大", "普通", "小"]}
-          contentsValue={["60", "40", "25", "15"]}
+          contentsValue={["60", "40", "25", "20"]}
         />
         <Select
           title=""

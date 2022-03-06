@@ -6,19 +6,7 @@ export const Button = (props) => {
       alert("グループを入力してください。");
       return;
     }
-    alert(
-      history +
-        "," +
-        para +
-        "," +
-        data.group +
-        "," +
-        data.color +
-        "," +
-        data.size +
-        "," +
-        data.speed
-    );
+    //alert(history + "," + para + "," + data.group + "," + data.color + "," + data.size + "," +  data.speed);
 
     //送信
     ajax(
@@ -26,8 +14,8 @@ export const Button = (props) => {
         group: data.group, //グループ
         color: data.color, //色
         size: data.size, //大きさ
-        pitch: data.speed, //速さ
-        comment: data.para //コメント
+        comment: para, //コメント
+        pitch: data.speed //速さ
       },
       //送信先
       "https://n2ws06j1hg.execute-api.ap-northeast-1.amazonaws.com/prod/NicoRegister2",
@@ -41,30 +29,26 @@ export const Button = (props) => {
 
   //■ajax送信汎用テンプレート（data:送信データ、url:送信先URL、successFunction:送信成功時に実行する関数）
   function ajax(data, url, successFunction) {
-    //送信
-    /*
-    $.ajax({
-      type: "post",
-      url: url,
+    alert("ok");
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(data),
       async: false,
-      data: JSON.stringify(data),
-      contentType: "application/json",
       dataType: "json",
-      success: function (param) {
-        if (param.error) {
-          alert(param.message);
-        } else {
-          //alert("success");
-          successFunction(param);
-        }
-      },
-      error: function (param) {
-        // Error
-        alert("error");
-        alert(JSON.stringify(param));
-      }
-    });
-  */
+      headers: new Headers({ "Content-type": "application/json" })
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        // リストの更新
+        alert(JSON.stringify(data));
+        successFunction();
+      })
+      .catch((reason) => {
+        // エラー
+        alert(reason);
+      });
   }
 
   const {
