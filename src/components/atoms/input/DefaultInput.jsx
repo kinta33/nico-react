@@ -18,7 +18,7 @@ export const DefaultInput = (props) => {
 
 const SInput = styled.input`
   background: #ffffff;
-  margin: 10px;
+  margin: 5px;
   padding: 3px;
   font-size: 20px;
   border: 2px solid #000000;

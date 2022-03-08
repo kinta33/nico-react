@@ -33,6 +33,9 @@ export const InputList = (props) => {
 
 const SContainer = styled.div`
   font-size: 20px;
+  @media screen and (max-width: 568px) {
+    white-space: nowrap; /* 自動で折り返ししない */
+  }
 `;
 
 const SInput = styled.input`
@@ -49,5 +52,9 @@ const SInput = styled.input`
     border-color: dodgerBlue;
     box-shadow: 0 0 8px 0 dodgerBlue;
     outline: 0; /*chromeでの見え方調整用*/
+  }
+  @media screen and (max-width: 568px) {
+    white-space: normal; /* 自動で折り返ししない */
+    width: 88%;
   }
 `;
