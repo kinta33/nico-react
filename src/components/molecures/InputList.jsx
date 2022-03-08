@@ -54,7 +54,7 @@ const SInput = styled.input`
     outline: 0; /*chromeでの見え方調整用*/
   }
   @media screen and (max-width: 568px) {
-    white-space: normal; /* 自動で折り返ししない */
+    white-space: normal; /* 折り返し初期化 */
     width: 88%;
   }
 `;
