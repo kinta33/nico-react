@@ -1,4 +1,3 @@
-//金子がコメントを入れました
 import { useState, memo } from "react";
 import styled from "styled-components";
 
@@ -24,19 +23,22 @@ export const Main = memo(() => {
   const [password, setPassword] = useState("");
   const [historyList, setHistoryList] = useState([]);
   const [admin, setAdmin] = useState(false);
-  const [size, setSize] = useState("普通");
-  const [color, setColor] = useState("黒");
-  const [speed, setSpeed] = useState("普通");
-
-  const colorList = ["黒", "赤", "青"];
-  const sizeList = ["大", "普通", "小"];
-  const speedList = ["速い", "普通", "遅い"];
+  const [color, setColor] = useState("Black");
+  const [size, setSize] = useState("25");
+  const [speed, setSpeed] = useState("20");
 
   const his = {
     historyList: historyList,
     setHistoryList: setHistoryList
   };
 
+  const data = {
+    his: his,
+    group: group,
+    size: size,
+    color: color,
+    speed: speed
+  };
   const checkPassword = () => {
     if (password === "kanri22") setAdmin(true);
   };
@@ -49,34 +51,41 @@ export const Main = memo(() => {
           ※開催者から提示されたグループ名を入力することで情報を送信できます。必ず入力してください。
         </Explanation>
       </DefaultArea>
-
       <DefaultArea pic={picComment}>
         <Select
-          title="色"
+          title="形式"
           setFunc={setColor}
           value={color}
-          contents={colorList}
+          contents={["黒", "赤", "青", "白"]}
+          contentsValue={["Black", "Red", "Blue", "White"]}
         />
         <Select
-          title="大きさ"
+          title=""
           setFunc={setSize}
           value={size}
-          contents={sizeList}
+          contents={["超大", "大", "普通", "小"]}
+          contentsValue={["60", "40", "25", "20"]}
         />
         <Select
-          title="速さ"
+          title=""
           setFunc={setSpeed}
           value={speed}
-          contents={speedList}
+          contents={["超速", "速い", "普通", "遅い", "超遅"]}
+          contentsValue={["80", "40", "20", "15", "10"]}
         />
 
-        <TitleInput title="コメント" size="50" setFunc={setComment} />
-        <Button para={comment} his={his} history={"「" + comment + "」"}>
+        <TitleInput
+          title="コメント"
+          placeholder="送信したい文字列を入力してください"
+          size="50"
+          setFunc={setComment}
+        />
+        <Button para={comment} data={data} history={"「" + comment + "」"}>
           コメント送信
         </Button>
         <Button
           para={"@Q:" + comment}
-          his={his}
+          data={data}
           history={"「" + comment + "」を質問で送信"}
         >
           質問として送信
@@ -84,7 +93,7 @@ export const Main = memo(() => {
       </DefaultArea>
 
       <DefaultArea pic={picNice}>
-        <Button para={"@Nice"} nice={true} his={his} history={"いいね!"}>
+        <Button para={"@Nice"} nice={true} data={data} history={"いいね!"}>
           いいね
         </Button>
       </DefaultArea>
@@ -95,7 +104,7 @@ export const Main = memo(() => {
             <Button
               para={`@V:${index + 1}`}
               key={index}
-              his={his}
+              data={data}
               vote={true}
               history={index + 1 + "に投票"}
             >
@@ -110,12 +119,12 @@ export const Main = memo(() => {
           title="パスワード"
           size="10"
           setFunc={setPassword}
-          his={his}
+          data={data}
           func={checkPassword}
         >
           管理画面解放
         </TitleInputButton>
-        {admin && <AdminArea his={his} />}
+        {admin && <AdminArea data={data} />}
       </DefaultArea>
 
       <DefaultArea pic={picHistory}>

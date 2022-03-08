@@ -1,18 +1,61 @@
 import styled from "styled-components";
 
 export const Button = (props) => {
-  const register = (para) => {
-    alert(para);
-    alert(children);
-    if (history !== "") {
-      his.setHistoryList([...his.historyList, history]);
+  const register = () => {
+    if (data.group === "") {
+      alert("グループを入力してください。");
+      return;
     }
+    //alert(history + "," + para + "," + data.group + "," + data.color + "," + data.size + "," +  data.speed);
+
+    //送信
+    ajax(
+      {
+        group: data.group, //グループ
+        color: data.color, //色
+        size: data.size, //大きさ
+        comment: para, //コメント
+        pitch: data.speed //速さ
+      },
+      //送信先
+      "https://n2ws06j1hg.execute-api.ap-northeast-1.amazonaws.com/prod/NicoRegister2",
+      () => {
+        if (history !== "") {
+          data.his.setHistoryList([...data.his.historyList, history]);
+        }
+      }
+    );
   };
+
+  //■ajax送信汎用テンプレート（data:送信データ、url:送信先URL、successFunction:送信成功時に実行する関数）
+  function ajax(data, url, successFunction) {
+    alert("ok");
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(data),
+      async: false,
+      dataType: "json",
+      headers: new Headers({ "Content-type": "application/json" })
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        // リストの更新
+        alert(JSON.stringify(data));
+        successFunction();
+      })
+      .catch((reason) => {
+        // エラー
+        alert(reason);
+      });
+  }
+
   const {
     children,
     func = () => register(para),
     para,
-    his,
+    data,
     history = children,
     vote,
     nice

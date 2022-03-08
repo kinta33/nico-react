@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 export const Select = (props) => {
-  const { contents, setFunc, title, value } = props;
+  const { contents, contentsValue = contents, setFunc, title, value } = props;
   const onChangeList = (event) => setFunc(event.target.value);
   const options = [];
+
   for (let i = 0; i < contents.length; i++) {
     options.push(
-      <option key={i} value={contents[i]}>
+      <option key={i} value={contentsValue[i]}>
         {contents[i]}
       </option>
     );
@@ -14,7 +15,7 @@ export const Select = (props) => {
 
   return (
     <SNowrap>
-      {title}{" "}
+      {title === "" ? "" : `${title} `}
       <SList value={value} onChange={onChangeList}>
         {options}
       </SList>
