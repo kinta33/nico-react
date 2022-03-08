@@ -153,7 +153,7 @@ export const AdminArea = (props) => {
 };
 
 const SContainer = styled.div`
-  width: 100%;
+  width: 96%;
   position: relative;
   margin: 0;
   padding: 0;

@@ -25,8 +25,8 @@ export const Select = (props) => {
 };
 //voteだけスタイルを変えたい時はvote=trueになっているので、それを使って変更する。(どうするかは要調査^^;)
 const SList = styled.select`
-  margin: 2%;
-  padding: 5px 15px;
+  margin: 3%;
+  padding: 5px 10px;
 
   font-size: 18px;
   text-align: left;
