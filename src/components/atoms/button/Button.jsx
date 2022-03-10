@@ -19,9 +19,13 @@ export const Button = (props) => {
       },
       //送信先
       "https://n2ws06j1hg.execute-api.ap-northeast-1.amazonaws.com/prod/NicoRegister2",
-      () => {
-        if (history !== "") {
-          data.his.setHistoryList([...data.his.historyList, history]);
+      (param) => {
+        if (param.error) {
+          alert(param.message);
+        } else {
+          if (history !== "") {
+            data.his.setHistoryList([...data.his.historyList, history]);
+          }
         }
       }
     );
@@ -29,7 +33,6 @@ export const Button = (props) => {
 
   //■ajax送信汎用テンプレート（data:送信データ、url:送信先URL、successFunction:送信成功時に実行する関数）
   function ajax(data, url, successFunction) {
-    alert("ok");
     fetch(url, {
       method: "POST",
       body: JSON.stringify(data),
@@ -42,8 +45,7 @@ export const Button = (props) => {
       })
       .then((data) => {
         // リストの更新
-        alert(JSON.stringify(data));
-        successFunction();
+        successFunction(data);
       })
       .catch((reason) => {
         // エラー
