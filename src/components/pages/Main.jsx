@@ -73,7 +73,6 @@ export const Main = memo(() => {
           contents={["超速", "速い", "普通", "遅い", "超遅"]}
           contentsValue={["80", "40", "20", "15", "10"]}
         />
-
         <TitleInput
           title="コメント"
           placeholder="送信したい文字列を入力してください"
